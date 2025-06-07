@@ -1,0 +1,14 @@
+catboost
+fastapi
+ipykernel
+joblib
+lightgbm
+matplotlib
+numpy
+pandas
+pydantic
+ruff
+scikit-learn
+seaborn
+uvicorn
+xgboost
