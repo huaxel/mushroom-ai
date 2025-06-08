@@ -1,0 +1,18 @@
+{
+    "columns": [
+        "stem-root",
+        "stem-surface",
+        "veil-type",
+        "veil-color",
+        "spore-print-color"
+    ],
+    "missing_percentages": {
+        "stem-root": 84.39306358381504,
+        "stem-surface": 62.42774566473989,
+        "veil-type": 94.79768786127167,
+        "veil-color": 87.86127167630057,
+        "spore-print-color": 89.59537572254335
+    },
+    "threshold_used": 60.0,
+    "drop_date": "2025-06-09 00:42:40"
+}

@@ -1,0 +1,18 @@
+{
+    "features_to_drop": [
+        "gill-color",
+        "cap-color",
+        "season",
+        "gill-spacing",
+        "ring-type",
+        "habitat",
+        "cap-shape",
+        "does-bruise-or-bleed",
+        "has-ring"
+    ],
+    "features_to_group_rare": [
+        "stem-color",
+        "ring-type",
+        "habitat"
+    ]
+}

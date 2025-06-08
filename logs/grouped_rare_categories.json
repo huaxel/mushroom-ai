@@ -1,0 +1,43 @@
+{
+    "stem-color": {
+        "rare_categories": [
+            "g",
+            "o",
+            "e",
+            "u",
+            "p",
+            "k",
+            "r",
+            "l",
+            "b",
+            "f"
+        ],
+        "threshold_percentage": 5,
+        "total_samples": 60010
+    },
+    "ring-type": {
+        "rare_categories": [
+            "e",
+            "z",
+            "l",
+            "r",
+            "p",
+            "g",
+            "m"
+        ],
+        "threshold_percentage": 5,
+        "total_samples": 60010
+    },
+    "habitat": {
+        "rare_categories": [
+            "l",
+            "m",
+            "h",
+            "p",
+            "w",
+            "u"
+        ],
+        "threshold_percentage": 5,
+        "total_samples": 60010
+    }
+}
