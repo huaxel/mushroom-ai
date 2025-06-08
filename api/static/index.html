@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mushroom Classifier</title>
+  </head>
+  <body>
+    <h1>Mushroom Classifier</h1>
+    <form id="predictForm">
+      Stem width: <input type="number" step="any" name="stem_width" /><br />
+      Stem height: <input type="number" step="any" name="stem_height" /><br />
+      Odor: <input type="text" name="odor" /><br />
+      Cap shape: <input type="text" name="cap_shape" /><br />
+      Gill color: <input type="text" name="gill_color" /><br />
+      <!-- Add other features here -->
+
+      <button type="submit">Predict</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("predictForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const jsonData = Object.fromEntries(formData.entries());
+          jsonData.stem_width = parseFloat(jsonData.stem_width);
+          jsonData.stem_height = parseFloat(jsonData.stem_height);
+
+          const response = await fetch("/predict", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(jsonData),
+          });
+
+          const result = await response.json();
+          document.getElementById("result").innerText =
+            "Prediction: " + result.prediction;
+        });
+    </script>
+  </body>
+</html>

@@ -286,6 +286,19 @@ wheels = [
 ]
 
 [[package]]
+name = "ineq"
+version = "0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ce/03/627a25554bde3df000d08ebff3bb23b4cf182e9893546e6a46c2f00d7d02/ineq-0.1.tar.gz", hash = "sha256:9cb165eb741059790ddb09a9a83b9afec7d45c0325065443942c28fd0be2363c", size = 1743, upload-time = "2018-12-02T15:38:44.274Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/86/6c/496a24cc3e94c274db336551065d21472d694001911df66b786bc03231aa/ineq-0.1-py3-none-any.whl", hash = "sha256:5f75d456a834925e2a7a39ac7cfd04c12da68084175e23fd3895491e80640171", size = 3176, upload-time = "2018-12-02T15:38:42.044Z" },
+]
+
+[[package]]
 name = "ipykernel"
 version = "6.29.5"
 source = { registry = "https://pypi.org/simple" }
@@ -517,6 +530,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "catboost" },
     { name = "fastapi" },
+    { name = "ineq" },
     { name = "ipykernel" },
     { name = "joblib" },
     { name = "lightgbm" },
@@ -535,6 +549,7 @@ dependencies = [
 requires-dist = [
     { name = "catboost", specifier = ">=1.2.8" },
     { name = "fastapi", specifier = ">=0.115.12" },
+    { name = "ineq", specifier = ">=0.1" },
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "joblib", specifier = ">=1.5.1" },
     { name = "lightgbm", specifier = ">=4.6.0" },
