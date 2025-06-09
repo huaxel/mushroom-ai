@@ -1,45 +1,345 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Mushroom Classifier</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mushroom Prediction Input</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background: linear-gradient(to right, #f9f9f9, #eef2f3);
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      form {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: #444;
+      }
+
+      select,
+      input[type="number"] {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.3rem;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      select:focus,
+      input[type="number"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        outline: none;
+      }
+
+      button {
+        margin-top: 1.5rem;
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1.1rem;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.1s ease;
+      }
+
+      button:hover {
+        background: #0056b3;
+        transform: translateY(-1px);
+      }
+
+      button:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+      }
+
+      small {
+        color: #555;
+      }
+    </style>
   </head>
   <body>
-    <h1>Mushroom Classifier</h1>
-    <form id="predictForm">
-      Stem width: <input type="number" step="any" name="stem_width" /><br />
-      Stem height: <input type="number" step="any" name="stem_height" /><br />
-      Odor: <input type="text" name="odor" /><br />
-      Cap shape: <input type="text" name="cap_shape" /><br />
-      Gill color: <input type="text" name="gill_color" /><br />
-      <!-- Add other features here -->
+    <h1>Mushroom Prediction Input</h1>
+    <form id="mushroom-form">
+      <label for="cap-diameter">Cap Diameter (cm)</label>
+      <input
+        type="number"
+        step="0.1"
+        id="cap-diameter"
+        name="cap-diameter"
+        required
+      />
 
-      <button type="submit">Predict</button>
+      <label for="cap-shape">Cap Shape</label>
+      <select id="cap-shape" name="cap-shape" required>
+        <option value="">-- Select --</option>
+        <option value="b">Bell</option>
+        <option value="c">Conical</option>
+        <option value="x">Convex</option>
+        <option value="f">Flat</option>
+        <option value="s">Sunken</option>
+        <option value="p">Spherical</option>
+        <option value="o">Others</option>
+      </select>
+
+      <label for="cap-surface">Cap Surface</label>
+      <select id="cap-surface" name="cap-surface" required>
+        <option value="">-- Select --</option>
+        <option value="i">Fibrous</option>
+        <option value="g">Grooves</option>
+        <option value="y">Scaly</option>
+        <option value="s">Smooth</option>
+        <option value="h">Shiny</option>
+        <option value="l">Leathery</option>
+        <option value="k">Silky</option>
+        <option value="t">Sticky</option>
+        <option value="w">Wrinkled</option>
+        <option value="e">Fleshy</option>
+      </select>
+
+      <label for="cap-color">Cap Color</label>
+      <select id="cap-color" name="cap-color" required>
+        <option value="">-- Select --</option>
+        <option value="n">Brown</option>
+        <option value="b">Buff</option>
+        <option value="g">Gray</option>
+        <option value="r">Green</option>
+        <option value="p">Pink</option>
+        <option value="u">Purple</option>
+        <option value="e">Red</option>
+        <option value="w">White</option>
+        <option value="y">Yellow</option>
+        <option value="l">Blue</option>
+        <option value="o">Orange</option>
+        <option value="k">Black</option>
+      </select>
+
+      <label for="does-bruise-or-bleed">Does Bruise or Bleed?</label>
+      <select id="does-bruise-or-bleed" name="does-bruise-or-bleed" required>
+        <option value="">-- Select --</option>
+        <option value="t">Yes (bruises or bleeds)</option>
+        <option value="f">No</option>
+      </select>
+
+      <label for="gill-attachment">Gill Attachment</label>
+      <select id="gill-attachment" name="gill-attachment" required>
+        <option value="">-- Select --</option>
+        <option value="a">Adnate</option>
+        <option value="x">Adnexed</option>
+        <option value="d">Decurrent</option>
+        <option value="e">Free</option>
+        <option value="s">Sinuate</option>
+        <option value="p">Pores</option>
+        <option value="f">None</option>
+        <option value="?">Unknown</option>
+      </select>
+
+      <label for="gill-spacing">Gill Spacing</label>
+      <select id="gill-spacing" name="gill-spacing" required>
+        <option value="">-- Select --</option>
+        <option value="c">Close</option>
+        <option value="d">Distant</option>
+        <option value="f">None</option>
+      </select>
+
+      <label for="gill-color">Gill Color</label>
+      <select id="gill-color" name="gill-color" required>
+        <option value="">-- Select --</option>
+        <option value="n">Brown</option>
+        <option value="b">Buff</option>
+        <option value="g">Gray</option>
+        <option value="r">Green</option>
+        <option value="p">Pink</option>
+        <option value="u">Purple</option>
+        <option value="e">Red</option>
+        <option value="w">White</option>
+        <option value="y">Yellow</option>
+        <option value="l">Blue</option>
+        <option value="o">Orange</option>
+        <option value="k">Black</option>
+        <option value="f">None</option>
+      </select>
+
+      <label for="stem-height">Stem Height (cm)</label>
+      <input
+        type="number"
+        step="0.1"
+        id="stem-height"
+        name="stem-height"
+        required
+      />
+
+      <label for="stem-width">Stem Width (mm)</label>
+      <input
+        type="number"
+        step="0.1"
+        id="stem-width"
+        name="stem-width"
+        required
+      />
+
+      <label for="stem-color">Stem Color</label>
+      <select id="stem-color" name="stem-color" required>
+        <option value="">-- Select --</option>
+        <option value="n">Brown</option>
+        <option value="b">Buff</option>
+        <option value="g">Gray</option>
+        <option value="r">Green</option>
+        <option value="p">Pink</option>
+        <option value="u">Purple</option>
+        <option value="e">Red</option>
+        <option value="w">White</option>
+        <option value="y">Yellow</option>
+        <option value="l">Blue</option>
+        <option value="o">Orange</option>
+        <option value="k">Black</option>
+        <option value="f">None</option>
+      </select>
+
+      <label for="has-ring">Has Ring?</label>
+      <select id="has-ring" name="has-ring" required>
+        <option value="">-- Select --</option>
+        <option value="t">Yes (ring)</option>
+        <option value="f">No</option>
+      </select>
+
+      <label for="ring-type">Ring Type</label>
+      <select id="ring-type" name="ring-type" required>
+        <option value="">-- Select --</option>
+        <option value="c">Cobwebby</option>
+        <option value="e">Evanescent</option>
+        <option value="r">Flaring</option>
+        <option value="g">Grooved</option>
+        <option value="l">Large</option>
+        <option value="p">Pendant</option>
+        <option value="s">Sheathing</option>
+        <option value="z">Zone</option>
+        <option value="y">Scaly</option>
+        <option value="m">Movable</option>
+        <option value="f">None</option>
+        <option value="?">Unknown</option>
+      </select>
+
+      <label for="habitat">Habitat</label>
+      <select id="habitat" name="habitat" required>
+        <option value="">-- Select --</option>
+        <option value="g">Grasses</option>
+        <option value="l">Leaves</option>
+        <option value="m">Meadows</option>
+        <option value="p">Paths</option>
+        <option value="h">Heaths</option>
+        <option value="u">Urban</option>
+        <option value="w">Waste</option>
+        <option value="d">Woods</option>
+      </select>
+
+      <label for="season">Season</label>
+      <select id="season" name="season" required>
+        <option value="">-- Select --</option>
+        <option value="s">Spring</option>
+        <option value="u">Summer</option>
+        <option value="a">Autumn</option>
+        <option value="w">Winter</option>
+      </select>
+
+      <button type="submit" id="predict-button">Predict</button>
     </form>
 
-    <p id="result"></p>
+    <div
+      id="result"
+      style="
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 5px;
+        display: none;
+        font-weight: bold;
+      "
+    ></div>
 
     <script>
-      document
-        .getElementById("predictForm")
-        .addEventListener("submit", async function (e) {
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("mushroom-form");
+        const resultBox = document.getElementById("result");
+        const button = document.getElementById("predict-button");
+
+        form.addEventListener("submit", async (e) => {
           e.preventDefault();
-          const formData = new FormData(e.target);
-          const jsonData = Object.fromEntries(formData.entries());
-          jsonData.stem_width = parseFloat(jsonData.stem_width);
-          jsonData.stem_height = parseFloat(jsonData.stem_height);
 
-          const response = await fetch("/predict", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(jsonData),
-          });
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
 
-          const result = await response.json();
-          document.getElementById("result").innerText =
-            "Prediction: " + result.prediction;
+          resultBox.style.display = "block";
+          resultBox.style.background = "#fff3cd";
+          resultBox.style.color = "#856404";
+          resultBox.textContent = "Predicting...";
+
+          button.disabled = true;
+          button.textContent = "Predicting...";
+
+          try {
+            console.time("Prediction fetch time"); // Start timer
+            const response = await fetch("/predict", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+
+            console.timeEnd("Prediction fetch time"); // End timer and log elapsed time
+
+            const result = await response.json();
+
+            if (response.ok) {
+              if (result.prediction === 1) {
+                resultBox.style.background = "#f8d7da"; // light red
+                resultBox.style.color = "#721c24"; // dark red
+                resultBox.textContent = "☠️ Poisonous!";
+              } else if (result.prediction === 0) {
+                resultBox.style.background = "#d4edda"; // light green
+                resultBox.style.color = "#155724"; // dark green
+                resultBox.textContent = "✅ Edible";
+              } else {
+                resultBox.style.background = "#ffeeba"; // fallback color
+                resultBox.style.color = "#856404";
+                resultBox.textContent = "Unknown prediction";
+              }
+            } else {
+              resultBox.style.background = "#f8d7da";
+              resultBox.style.color = "#721c24";
+              resultBox.textContent =
+                "Error: " + (result.detail || "Unknown error");
+            }
+          } catch (err) {
+            resultBox.style.background = "#f8d7da";
+            resultBox.style.color = "#721c24";
+            resultBox.textContent = "Error: " + err.message;
+          } finally {
+            button.disabled = false;
+            button.textContent = "Predict";
+          }
         });
+      });
     </script>
   </body>
 </html>

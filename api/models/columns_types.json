@@ -1,0 +1,17 @@
+{
+  "cap-diameter": "float",
+  "stem-height": "float",
+  "stem-width": "float",
+  "cap-shape": "str",
+  "cap-surface": "str",
+  "cap-color": "str",
+  "does-bruise-or-bleed": "str",
+  "gill-attachment": "str",
+  "gill-spacing": "str",
+  "gill-color": "str",
+  "stem-color": "str",
+  "has-ring": "str",
+  "ring-type": "str",
+  "habitat": "str",
+  "season": "str"
+}

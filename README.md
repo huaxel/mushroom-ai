@@ -6,20 +6,22 @@ This project aims to classify mushrooms as either poisonous or edible based on t
 
 ## Features
 
-* **Exploratory Data Analysis (EDA)**: Understand the dataset and identify relevant features
-* **Model Pipelines**: Train and evaluate machine learning models using scikit-learn
-* **Hyperparameter Tuning**: Optimize model performance
-* **Model Evaluation**: Assess the performance of the trained models
-* **API Development**: Build a simple API using FastAPI
-* **API Deployment**: Deploy the API using Uvicorn and Cloudflare Workers & Pages
-* **Simple Frontend**: Demonstrate the model's capabilities
+* **Exploratory Data Analysis (EDA)**: Conducted EDA to clean the dataset, drop columns with excessive missing values, and rows with suspect values. Generated feature importance metrics and identified key features for classification.
+* **Model Pipelines**: Created modular pipelines for preprocessing and classification using scikit-learn.
+* **Hyperparameter Tuning**: Optimized model parameters using RandomizedSearchCV.
+* **Model Evaluation**: Compared models based on accuracy, cross-validation scores, and feature importance. Identified Extra Trees as the best-performing model (~99.8% test accuracy).
+* **Feature Selection**: Reduced feature set using SelectKBest and feature importance analysis, achieving comparable performance.
+* **Ensemble Methods**: Implemented VotingClassifier for model combination.
+* **API Development**: Developed a FastAPI-based API (`api/app.py`) for real-time predictions.
+* **Frontend**: Created a simple frontend (`api/static/index.html`) to interact with the API.
+* **Deployment**: Hosted the API and frontend using Cloudflare Workers & Pages.
 
 ## Technologies Used
 
 * **Jupyter Notebooks**: Data analysis and model development
 * **Pandas**: Data manipulation and analysis
 * **Matplotlib and Seaborn**: Data visualization
-* **scikit-learn, XGBoost, LightGBM and CatBoost**: Machine learning tasks
+* **scikit-learn, XGBoost and CatBoost**: Machine learning tasks
 * **FastAPI**: API development
 * **Uvicorn**: API deployment
 * **Cloudflare Workers & Pages**: Hosting the API and frontend
@@ -29,6 +31,11 @@ This project aims to classify mushrooms as either poisonous or edible based on t
 ### Step 1: Clone the Repository
 
 Clone the repository to your local machine.
+
+```bash
+git clone https://github.com/your-repo/mushroom-ai.git
+cd mushroom-ai
+```
 
 ### Step 2: Install Dependencies
 
@@ -43,20 +50,46 @@ pip install -r requirements.txt
 Start the API by running:
 
 ```bash
-uvicorn main:app --reload
+uvicorn api.app:app --reload
 ```
 
-### Step 4: Access the frontend
+### Step 4: Access the Frontend
 
-Access the frontend by navigating to [http://localhost:8000](http://localhost:8000)
+Access the frontend by navigating to [http://localhost:8000](http://localhost:8000).
 
 ## Live Demo
 
 A live demo of the project is hosted on Cloudflare Workers & Pages. You can access it by clicking [here](insert link).
 
-## Usage instructions
+## Usage Instructions
 
-To be added later
+### Using the API
+
+1. Start the API using the command provided above.
+2. Send a POST request to the `/predict` endpoint with the required input features in JSON format.
+3. Example input:
+
+```json
+{
+  "feature1": "value1",
+  "feature2": "value2",
+  "feature3": "value3"
+}
+```
+
+4. Example output:
+
+```json
+{
+  "prediction": "edible"
+}
+```
+
+### Using the Frontend
+
+1. Open the frontend in your browser.
+2. Enter the required input features in the form.
+3. Click the "Predict" button to see the result.
 
 ## License
 
@@ -64,7 +97,7 @@ To be added later.
 
 ## Acknowledgments
 
-To be added later
+To be added later.
 
 ## Author
 
