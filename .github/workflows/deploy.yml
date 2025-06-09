@@ -17,6 +17,7 @@ jobs:
       - name: Install Flyctl
         uses: superfly/flyctl-actions/setup-flyctl@v1
         with:
+          args: "deploy --remote-only --dockerfile api/Dockerfile --context api"
           version: latest
       - name: Deploy to Fly
         run: flyctl deploy --remote-only --app mushroom-ai
