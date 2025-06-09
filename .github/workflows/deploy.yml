@@ -1,0 +1,24 @@
+name: Deploy to Fly.io
+
+on:
+  push:
+    branches:
+      - main # or your deployment branch
+
+jobs:
+  deploy:
+    name: Deploy app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@v1
+        with:
+          version: latest
+      - name: Deploy to Fly
+        run: flyctl deploy --remote-only --app mushroom-ai
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
