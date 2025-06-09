@@ -7,6 +7,9 @@ app = 'mushroom-ai'
 primary_region = 'ams'
 
 [build]
+dockerfile = "api/Dockerfile"
+context = "api"
+
 
 [http_service]
   internal_port = 8080
