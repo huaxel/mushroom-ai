@@ -1,3 +1,40 @@
-.ipynb_checkpoints/
+# Python virtual environment
 .venv/
-catboost_info/
+env/
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs and reports
+logs/
+*.log
+
+# Pytest cache
+.pytest_cache/
+
+# VSCode settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Fly.io local files (optional, if you don’t want to commit)
+.fly/
+
+# Data and model files you don’t want in git (adjust as needed)
+notebook/catboost_info/
+
+# Ignore secrets or credentials if any
+*.env
