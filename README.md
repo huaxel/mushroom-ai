@@ -63,8 +63,16 @@ A live demo of the project is hosted on [mushrooms.huaxel.com](http://mushrooms.
 Just run
 
 ```bash
-docker compose up -d
+docker run -p "8080:8080" ghcr.io/huaxel/mushroom-api:latest
 ```
+
+or
+
+```bash
+docker compose up
+```
+
+after cloning the repo
 
 ### Manual install
 
