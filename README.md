@@ -35,6 +35,7 @@ A simple API and frontend are also deployed to demonstrate the model's capabilit
 
 ## Project structure
 
+```
 mushroom-ai/
 ├── api/                    # FastAPI backend and frontend files
 │   ├── app.py              # Main FastAPI application
@@ -49,7 +50,7 @@ mushroom-ai/
 ├── README.md               # Project documentation
 ├── LICENSE                 # Project license (MIT)
 └── pyproject.toml          # Project configuration (optional)
-
+```
 
 ## Live Demo
 
