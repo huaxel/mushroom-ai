@@ -2,7 +2,15 @@
 
 ## Introduction
 
-This project aims to classify mushrooms as either poisonous or edible based on their physical characteristics. The project involves data preprocessing, exploratory data analysis, model pipelines, hyperparameter tuning, feature selection, ensemble models with voting classifier and model evaluation.
+Correctly identifying poisonous mushrooms can have life-saving applications.
+
+Using machine learning, this project classifies mushrooms as either poisonous or edible based on their physical characteristics — achieving very high accuracy.
+
+Final model accuracy: 99.97% on test set.
+
+Interestingly, gill-related features (gill-attachment, gill-color, gill-spacing) and stem-related features (stem-width and stem-color) were the most predictive.
+
+The project involves data preprocessing, exploratory data analysis, model pipelines, hyperparameter tuning, feature selection, ensemble models with voting classifier and model evaluation.
 
 A simple API and frontend are also deployed to demonstrate the model's capabilities.
 
@@ -105,6 +113,10 @@ uvicorn api.app:app --reload
 
 Access the frontend by navigating to [http://localhost:8000](http://localhost:8000).
 
+(if running locally via Uvicorn).
+
+For Docker, access  [http://localhost:8080](http://localhost:8080).
+
 ## Usage Instructions
 
 ### Using the API
@@ -135,7 +147,7 @@ Access the frontend by navigating to [http://localhost:8000](http://localhost:80
 
 4. Example output:
 
-Interpretation: 1 = poisonous mushroom, 0 = edible mushroom.
+The model returns 1 for poisonous, 0 for edible mushrooms.
 
 ```json
 {
@@ -156,6 +168,8 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgements
 
 This project was developed as part of the *AI Essentials 2025* course at Erasmus HB, taught by ir. Domien Hennion.
+
+This repository is public to contribute to learning.
 
 ## Author
 
