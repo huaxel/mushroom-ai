@@ -6,4 +6,3 @@ services:
       - "8080:8080"
     volumes:
       - .:/app
-    command: sh -c 'echo "Your Mushroom AI is ready! Visit http://127.0.0.1:8080/static/ to predict." && uvicorn app:app --host 0.0.0.0 --port 8080'
