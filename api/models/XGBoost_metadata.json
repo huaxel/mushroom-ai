@@ -1,8 +1,7 @@
 {
   "model_name": "XGBoost",
   "test_accuracy": 0.9997500416597234,
-  "combined_score": 0.9508718499464777,
-  "training_date": "2025-06-09 13:08:42",
+  "training_date": "2025-06-10 11:58:55",
   "features_used": "all_features",
   "preprocessing": "StandardScaler + OrdinalEncoder"
 }
