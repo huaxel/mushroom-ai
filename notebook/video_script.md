@@ -2,80 +2,76 @@
 
 ## Introductie (~1 min)
 
-“In dit project heb ik machine learning modellen ontwikkeld en geoptimaliseerd om champignons te classificeren als eetbaar of giftig.”
+In dit project heb ik gewerkt aan een machine learning model om champignons te classificeren als eetbaar of giftig.
 
-“Het doel van dit project was om te voorspellen of een champignon eetbaar of giftig is, op basis van verschillende fysieke kenmerken uit een uitgebreide versie van de UCI Mushroom Dataset.”
+Het idee is om op basis van verschillende fysieke kenmerken — uit een uitgebreide versie van de UCI Mushroom Dataset — te voorspellen of je de champignon veilig kunt eten.
 
-“Om dit te doen heb ik een gestructureerde en modulaire aanpak gevolgd, met het opzetten van preprocessing pipelines, uitgebreide hyperparameter tuning, en een grondige evaluatie van verschillende machine learning modellen.”
+Om dit voor elkaar te krijgen, heb ik een gestructureerde aanpak gevolgd. Denk aan het bouwen van preprocessing pipelines, uitgebreid hyperparameter tuning doen, en verschillende modellen vergelijken.
 
-“Daarnaast heb ik gekeken naar feature selectie en ensemble technieken om de modellen verder te verbeteren en te optimaliseren.”
+Ik heb ook gekeken hoe ik de prestaties kon verbeteren met feature selectie en ensemble technieken.
 
 ## 1 Verkennende Data-analyse & Preprocessing (~3-4 min)
 
-“Allereerst heb ik een verkennende data-analyse uitgevoerd om de verdeling van de features en de balans tussen eetbare en giftige paddenstoelen te begrijpen.”
+Ik ben begonnen met een verkennende data-analyse. Daarmee krijg je gevoel voor hoe de features verdeeld zijn en hoe de verhouding is tussen eetbare en giftige paddenstoelen.
 
-“Ik heb gecontroleerd op ontbrekende waarden en inzicht gekregen in de frequentie van verschillende categorische waarden.”
+Ik heb gecontroleerd of er ontbrekende waarden waren en gekeken naar hoe vaak bepaalde categorische waarden voorkomen.
 
-“Vervolgens heb ik de data voorbereid door onderscheid te maken tussen numerieke en categorische features en hiervoor herbruikbare preprocessing pipelines gebouwd. Deze pipelines zorgen ervoor dat preprocessing consistent wordt toegepast tijdens training en validatie.”
+Daarna heb ik de data voorbereid. Daarbij heb ik aparte preprocessing pipelines gemaakt voor numerieke en categorische features. Het voordeel hiervan is dat preprocessing altijd consistent gebeurt, zowel bij training als bij validatie.
 
-“Door deze modulaire opzet is het eenvoudig om nieuwe modellen toe te voegen zonder steeds preprocessing-code te dupliceren.”
+Met deze modulaire aanpak kun je bovendien makkelijk nieuwe modellen toevoegen, zonder dat je preprocessing telkens opnieuw hoeft te schrijven.
 
 ## 2 Helper Functies en Modulariteit (~2 min)
 
-“Om dubbele code te vermijden en overzichtelijk te werken, heb ik helper functies ontwikkeld voor het opzetten van pipelines, het uitvoeren van hyperparameter tuning met RandomizedSearchCV en het plotten van learning curves.”
+Om te voorkomen dat ik overal dezelfde stukken code moest kopiëren, heb ik een paar handige helper functies geschreven. Daarmee kan ik snel pipelines opzetten, hyperparameter tuning uitvoeren met RandomizedSearchCV, en learning curves plotten.
 
-“Deze aanpak verhoogt de reproduceerbaarheid en maakt het makkelijk om verschillende modellen systematisch te trainen en te evalueren.”
+Die aanpak maakt het hele proces een stuk overzichtelijker en zorgt ervoor dat ik modellen makkelijk en op een consistente manier kan trainen en evalueren.
 
 ## 3 Model training en tuning (~1 min)
 
-“Ik heb een breed scala aan modellen getraind en geoptimaliseerd, waaronder: Logistic Regression met PCA, Stochastic Gradient Descent, Random Forest, Extra Trees, XGBoost en CatBoost.”
+Ik heb verschillende modellen getraind en geoptimaliseerd. Denk aan Logistic Regression met PCA, Stochastic Gradient Descent, Random Forest, Extra Trees, XGBoost en CatBoost.
 
-“Voor elk model heb ik parameter grids gedefinieerd om een eerste hyperparameter tuning uit te voeren met cross-validation.”
+Voor elk model heb ik met cross-validation en hyperparameter tuning gekeken welke instellingen het beste werken.
 
-“Ook heb ik learning curves geplot om te controleren of de modellen goed generaliseren naar nieuwe data en om eventuele onder- of overfitting te detecteren.”
+Ook heb ik learning curves geplot om te controleren of de modellen goed generaliseren naar nieuwe data en om te zien of er sprake is van over- of underfitting.
 
 ## 4 Model Evaluatie en Vergelijking (~4 min)
 
-“De modellen zijn vergeleken op test accuracy, cross-validation scores en trainingstijd.”
+Ik heb de modellen met elkaar vergeleken op test accuracy, cross-validation scores en trainingstijd.
 
-“De beste prestaties werden behaald door tree-based ensemble modellen en gradient boosting technieken, met test accuracies boven de 99,8%.”
+De tree-based ensemble modellen en gradient boosting technieken presteerden het beste, met test accuracies boven de 99,8%.
 
-“Lineaire modellen scoorden duidelijk lager, wat aangeeft dat de relatie tussen features en klasse niet-lineair is.”
+Lineaire modellen scoorden duidelijk lager. Dat geeft aan dat de relatie tussen de features en de klasse niet lineair is.
 
-“De learning curves bevestigden dat de modellen goed generaliseren en geen overfitting vertonen.”
+De learning curves lieten zien dat de modellen goed generaliseren en geen overfitting vertonen.
 
 ## 5 Feature Importance en Ensemble methoden (~5 min)
 
-“Een belangrijk onderdeel was het analyseren van feature importance om te bepalen welke kenmerken het meest bijdragen aan de voorspellingen.”
+Ik heb ook gekeken naar feature importance, om te bepalen welke kenmerken het meest bijdragen aan de voorspellingen.
 
-“Hieruit bleek dat een kleine subset van features het merendeel van de informatie bevat.”
+Uiteindelijk bleek dat een kleine subset van features het meeste informatie bevat.
 
-“Met methodes als SelectKBest op basis van mutual information heb ik geëxperimenteerd met het trainen van modellen op alleen de belangrijkste features.”
+Daarom heb ik geëxperimenteerd met SelectKBest, waarbij ik alleen de belangrijkste features gebruikte om nieuwe modellen te trainen.
 
-“De resultaten toonden aan dat met slechts de top 6 features de prestaties vergelijkbaar bleven met het gebruik van alle 15 features, wat leidt tot snellere en eenvoudigere modellen.”
+De resultaten waren verrassend goed. Met slechts de top 6 features bleef de performance vrijwel gelijk aan het gebruik van alle 15 features. Dit levert snellere en eenvoudiger modellen op.
 
-“Ik heb ook geëxperimenteerd met ensemble technieken zoals VotingClassifier, waarbij voorspellingen van meerdere modellen worden gecombineerd.”
+Bovendien heb ik gekeken naar ensemble technieken, zoals de VotingClassifier. Hierbij combineer je de voorspellingen van meerdere modellen.
 
-"Hoewel deze ensembles competitieve resultaten opleverden, was het verschil met het beste individuele model beperkt, waardoor de eenvoud van een enkel model de voorkeur kreeg.”
+De ensembles presteerden prima, maar het verschil met het beste individuele model was beperkt. Daarom koos ik uiteindelijk voor het eenvoudiger XGBoost model.
 
-“Dit suggereert dat voor deze dataset goed getunede individuele modellen al optimaal presteren.”
+Bij deze dataset lijken goed getunede individuele modellen dus al optimaal te presteren.
 
 ## 6 Eindconclusie en productie (~3 min)
 
-“Samenvattend laat dit project zien dat met een systematische aanpak van preprocessing, hyperparameter tuning en feature selectie, een zeer hoge nauwkeurigheid haalbaar is voor het classificeren van paddenstoelen.”
+Samenvattend: met een systematische aanpak van preprocessing, hyperparameter tuning en feature selectie kun je deze paddenstoelen heel nauwkeurig classificeren.
 
-“Voor verdere verbetering zijn er nog enkele interessante mogelijkheden:”
+Er zijn natuurlijk nog verbeterpunten. Ik zou bijvoorbeeld vergelijkbare categorieën in de data kunnen samenvoegen om het model compacter te maken.
 
-“- Het samenvoegen van vergelijkbare categorieën in de data, wat de feature dimensionaliteit kan verkleinen en interpretatie kan vergemakkelijken.”
+Ook kan ik verder kijken naar feature engineering, of alternatieve modellen zoals deep learning proberen.
 
-“- Verdere feature engineering, zoals het combineren van sterk gecorreleerde kenmerken.”
+Een ander idee is om technieken toe te passen die eventuele onbalans in de dataset aanpakken, al is deze dataset al redelijk gebalanceerd.
 
-“- Uitbreiden van hyperparameter tuning of het proberen van alternatieve modellen zoals deep learning.”
+Het uiteindelijke model dat ik nu gebruik — een XGBoost met geselecteerde features — biedt een goede balans tussen nauwkeurigheid en efficiëntie.
 
-“- Experimenteren met technieken voor het aanpakken van eventuele onbalans in de dataset, hoewel deze relatief gebalanceerd is.”
+Ik heb dit model geëxporteerd en geïntegreerd in een FastAPI-applicatie, zodat je via een REST API real-time voorspellingen kunt opvragen.
 
-“Het uiteindelijke model, een XGBoost met geselecteerde features, biedt een uitstekende balans tussen nauwkeurigheid en efficiëntie.”
-
-“Dit model is geëxporteerd en geïntegreerd in een FastAPI-applicatie, zodat het via een REST API real-time voorspellingen kan doen.”
-
-"Een Docker image en Compose-bestand werden ook voorzien, voor eenvoudige DIY deployment"
+Tot slot heb ik ook een Docker image en Compose-bestand gemaakt, zodat je het hele project makkelijk zelf kunt deployen.
