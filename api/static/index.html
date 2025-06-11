@@ -10,16 +10,29 @@
         max-width: 600px;
         margin: 2rem auto;
         padding: 1rem;
-        background: linear-gradient(to right, #f9f9f9, #eef2f3);
+        background-color: white;
+        background-image: url("background.jpg");
+        background-repeat: repeat;
+        background-size: 94px 96px;
+        background-position: top left;
         color: #333;
       }
 
       h1 {
         text-align: center;
         margin-bottom: 1.5rem;
-        color: #333;
+        color: #131212;
       }
-
+      #mushroom-hero {
+        display: block;
+        max-width: 95%;
+        height: auto;
+        margin: 0 auto 1.5rem;
+        border-radius: 12px;
+        border: 2px solid #4b0a03;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
       form {
         background: white;
         padding: 1.5rem 2rem;
@@ -81,6 +94,7 @@
     </style>
   </head>
   <body>
+    <img id="mushroom-hero" src="./mushrooms.jpg" alt="Mushroom Hero" />
     <h1>Mushroom Prediction Input</h1>
     <form id="mushroom-form">
       <label for="cap-diameter">Cap Diameter (cm)</label>
