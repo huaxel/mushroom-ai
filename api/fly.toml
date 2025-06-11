@@ -8,7 +8,7 @@ primary_region = 'ams'
 
 [build]
 dockerfile = "Dockerfile"
-context = "api"
+context = "."
 
 
 [http_service]
