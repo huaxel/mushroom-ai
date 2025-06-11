@@ -51,10 +51,10 @@ mushroom-ai/
 │   ├── models/             # Trained ML models and metadata
 │   ├── requirements.txt    # Python dependencies for the API
 │   └── Dockerfile          # Dockerfile to build the API container
+│   └── docker-compose.yml  # Docker Compose file for local development and deployment
 ├── logs/                   # Logs and JSON files from data processing and experiments
 ├── notebook/               # Jupyter notebooks for analysis and modeling
 ├── src/                    # Additional source files, datasets, and media
-├── docker-compose.yml      # Docker Compose file for local development and deployment
 ├── README.md               # Project documentation
 ├── LICENSE                 # Project license (MIT)
 └── pyproject.toml          # Project configuration (optional)
@@ -90,7 +90,7 @@ Clone the repository to your local machine.
 
 ```bash
 git clone https://github.com/huaxel/mushroom-ai.git
-cd mushroom-ai
+cd mushroom-ai/api
 ```
 
 #### Step 2: Install Dependencies
