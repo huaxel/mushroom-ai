@@ -7,7 +7,7 @@ app = 'mushroom-ai'
 primary_region = 'ams'
 
 [build]
-dockerfile = "api/Dockerfile"
+dockerfile = "Dockerfile"
 context = "api"
 
 
