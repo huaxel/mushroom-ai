@@ -23,6 +23,6 @@ jobs:
           version: latest
 
       - name: Deploy to Fly
-        run: flyctl deploy --remote-only --app mushroom-ai --dockerfile api/Dockerfile
+        run: flyctl deploy --remote-only --app mushroom-ai
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
