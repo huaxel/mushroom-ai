@@ -62,7 +62,7 @@ mushroom-ai/
 
 ## Live Demo
 
-A live demo of the project is hosted on [mushrooms.huaxel.com](http://mushrooms.huaxel.com).
+A live demo of the project is hosted on [mushrooms.huaxel.com](https://mushroom-ai.fly.dev/).
 
 ## Installation Instructions
 
