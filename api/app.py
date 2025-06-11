@@ -5,6 +5,10 @@ import pandas as pd
 import json
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+import os
+from fastapi.requests import Request
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static", html=True), name="static")
@@ -34,6 +38,10 @@ field_definitions = {
 
 MushroomInput = create_model("MushroomInput", **field_definitions)
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
 @app.post("/predict")
 def predict(input_data: MushroomInput):  # type: ignore
     df = pd.DataFrame([input_data.model_dump()])
@@ -48,5 +56,9 @@ def predict(input_data: MushroomInput):  # type: ignore
     return {"prediction": int(prediction[0])}
 
 @app.get("/")
-def read_root():
-    return {"status": "ok"}
+def serve_frontend():
+    return FileResponse(os.path.join("static", "index.html"))
+
+@app.get("/{full_path:path}", response_class=HTMLResponse)
+async def frontend_catch_all(full_path: str):
+    return FileResponse(os.path.join("static", "index.html"))
