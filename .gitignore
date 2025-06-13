@@ -39,4 +39,4 @@ notebook/catboost_info/
 # Ignore secrets or credentials if any
 *.env
 
-/notebook/video_script.md
+notebook/video_script.md
