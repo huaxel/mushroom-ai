@@ -1,2 +1,2 @@
-notebook/video_script.md filter=git-crypt diff=git-crypt
+src/script.md filter=git-crypt diff=git-crypt
 
