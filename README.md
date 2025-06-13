@@ -6,13 +6,17 @@ Correctly identifying poisonous mushrooms can have life-saving applications.
 
 Using machine learning, this project classifies mushrooms as either poisonous or edible based on their physical characteristics — achieving very high accuracy.
 
-Final model accuracy: 99.97% on test set.
+**Final model accuracy**: 99.97% on test set.
 
 Interestingly, gill-related features (gill-attachment, gill-color, gill-spacing) and stem-related features (stem-width and stem-color) were the most predictive.
 
 The project involves data preprocessing, exploratory data analysis, model pipelines, hyperparameter tuning, feature selection, ensemble models with voting classifier and model evaluation.
 
 A simple API and frontend are also deployed to demonstrate the model's capabilities.
+
+## Live Demo
+
+A live demo of the project is hosted on [mushrooms.huaxel.com](https://mushroom.huaxel.com/). 
 
 ## Features
 
@@ -59,10 +63,6 @@ mushroom-ai/
 ├── LICENSE                 # Project license (MIT)
 └── pyproject.toml          # Project configuration (optional)
 ```
-
-## Live Demo
-
-A live demo of the project is hosted on [mushrooms.huaxel.com](https://mushroom-ai.fly.dev/).
 
 ## Installation Instructions
 
