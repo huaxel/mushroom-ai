@@ -16,7 +16,7 @@ A simple API and frontend are also deployed to demonstrate the model's capabilit
 
 ## Live Demo
 
-A live demo of the project is hosted on [mushrooms.huaxel.com](https://mushroom.huaxel.com/). 
+A live demo of the project is hosted on [mushroom.huaxel.com](https://mushroom.huaxel.com/). 
 
 ## Features
 
