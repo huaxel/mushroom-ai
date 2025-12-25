@@ -4,11 +4,11 @@
 
 Correctly identifying poisonous mushrooms can have life-saving applications.
 
-Using machine learning, this project classifies mushrooms as either poisonous or edible based on their physical characteristics — achieving very high accuracy.
+Using machine learning, this project classifies mushrooms as either poisonous or edible based on their physical characteristics — achieving **very high accuracy**.
 
-**Final model accuracy**: 99.97% on test set.
+ > **Final model accuracy**: 99.97% on test set.
 
-Interestingly, gill-related features (gill-attachment, gill-color, gill-spacing) and stem-related features (stem-width and stem-color) were the most predictive.
+Also interesting to note is that gill-related features (gill-attachment, gill-color, gill-spacing) and stem-related features (stem-width and stem-color) were the most predictive.
 
 The project involves data preprocessing, exploratory data analysis, model pipelines, hyperparameter tuning, feature selection, ensemble models with voting classifier and model evaluation.
 
@@ -16,43 +16,68 @@ A simple API and frontend are also deployed to demonstrate the model's capabilit
 
 ## Live Demo
 
-A live demo of the project is hosted on [mushroom.huaxel.com](https://mushroom.huaxel.com/). 
+A live demo of the project is hosted on [mushroom.huaxel.com](https://mushroom.huaxel.com/).
+
+## Technical Approach
+
+A structured approach was followed to ensure model robustness and reproducibility:
+
+### 1. Exploratory Data Analysis (EDA) & Preprocessing
+
+- Conducted EDA to understand feature distributions and class balance.
+- Checked for missing values and analyzed categorical frequency.
+- Built separate **preprocessing pipelines** for numerical and categorical features to ensure consistency between training and validation.
+
+### 2. Model Training & Tuning
+
+- Experimented with varying models: **Logistic Regression (with PCA), SGD, Random Forest, Extra Trees, XGBoost, and CatBoost**.
+- Used **RandomizedSearchCV** for hyperparameter tuning.
+- Plotted **learning curves** to verify generalization and check for over/underfitting.
+
+### 3. Evaluation & Comparisons
+
+- Tree-based models (Extra Trees, Random Forest, XGBoost) performed best (>99.8% test accuracy).
+- Linear models underperformed, suggesting non-linear feature relationships.
+- **XGBoost** was selected as the final production model for its balance of accuracy and efficiency.
+
+### 4. Feature Optimization
+
+- Feature importance analysis revealed a small subset of features drove most predictions.
+- **SelectKBest** showed that using only the **top 6 features** yielded comparable performance to using all 15.
+- While ensemble methods (VotingClassifier) were tested, the gain was marginal compared to a well-tuned XGBoost model.
 
 ## Features
 
-* **Exploratory Data Analysis (EDA)**: Conducted EDA to clean the dataset, drop columns with excessive missing values, and rows with suspect values. Generated feature importance metrics and identified key features for classification.
-* **Model Pipelines**: Created modular pipelines for preprocessing and classification using scikit-learn.
-* **Hyperparameter Tuning**: Optimized model parameters using RandomizedSearchCV.
-* **Model Evaluation**: Compared models based on accuracy, cross-validation scores, and feature importance. Identified Extra Trees, Random Forest and XGBoost as the best-performing models (>99.97% test accuracy).
-* **Feature Selection**: Reduced feature set using SelectKBest and feature importance analysis, achieving comparable performance.
-* **Ensemble Methods**: Implemented VotingClassifier for model combination.
-* **API Development**: Developed a FastAPI-based API (`api/app.py`) for real-time predictions.
-* **Frontend**: Created a simple frontend (`api/static/index.html`) to interact with the API.
-* **Deployment**: Hosted the API and frontend using docker and fly.io.
+- **API Development**: developed a FastAPI-based API for real-time predictions.
+- **Frontend**: created a simple frontend to interact with the API.
+- **Deployment**: hosted the API and frontend using docker and fly.io.
+- **CI/CD**: Automated testing pipeline via GitHub Actions to ensure code quality.
 
 ## Technologies Used
 
-* **Jupyter Notebooks**: Data analysis and model development
-* **Pandas**: Data manipulation and analysis
-* **SciPy stats**: Statistical tests for model evaluation
-* **Matplotlib and Seaborn**: Data visualization
-* **scikit-learn, XGBoost and CatBoost**: Machine learning tasks
-* **Joblib**: Model persistence and export for deployment.
-* **FastAPI**: API development
-* **Uvicorn**: API deployment
-* **HTML, CSS, JavaScript**: Simple frontend for interacting with the API.
-* **Docker**: Hosting the API and frontend
-* **GitHub Actions**: CI/CD pipeline for automated deployment to Fly.io.
-* **Fly.io**: Cloud hosting for API and frontend.
+- **Jupyter Notebooks**: Data analysis and model development
+- **Pandas**: Data manipulation and analysis
+- **SciPy stats**: Statistical tests for model evaluation
+- **Matplotlib and Seaborn**: Data visualization
+- **scikit-learn, XGBoost and CatBoost**: Machine learning tasks
+- **Joblib**: Model persistence and export for deployment.
+- **FastAPI**: API development
+- **Uvicorn**: API deployment
+- **HTML, CSS, JavaScript**: Simple frontend for interacting with the API.
+- **Docker**: Hosting the API and frontend
+- **GitHub Actions**: CI/CD pipeline for automated testing and deployment.
+- **Fly.io**: Cloud hosting for API and frontend.
 
 ## Project structure
 
 ```
 mushroom-ai/
 ├── api/                    # FastAPI backend and frontend files
-│   ├── app.py              # Main FastAPI application
-│   ├── static/             # Frontend assets (HTML, CSS, JS)
 │   ├── models/             # Trained ML models and metadata
+│   ├── static/             # Frontend assets (HTML, CSS, JS)
+│   ├── tests/              # Unit tests
+│   ├── app.py              # Main FastAPI application
+│   ├── schemas.py          # Pydantic models
 │   ├── requirements.txt    # Python dependencies for the API
 │   └── Dockerfile          # Dockerfile to build the API container
 │   └── docker-compose.yml  # Docker Compose file for local development and deployment
@@ -90,40 +115,44 @@ Clone the repository to your local machine.
 
 ```bash
 git clone https://github.com/huaxel/mushroom-ai.git
-cd mushroom-ai/api
+cd mushroom-ai
 ```
 
 #### Step 2: Install Dependencies
 
-Install the required dependencies by running:
+It is recommended to use a virtual environment.
 
 ```bash
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r api/requirements.txt
 ```
 
-#### Step 3: Start the API
+#### Step 3: Run Tests
+
+Ensure everything is working correctly by running the tests.
+
+```bash
+pip install pytest httpx
+python -m pytest api/tests
+```
+
+#### Step 4: Start the API
 
 Start the API by running:
 
 ```bash
-uvicorn api.app:app --reload
+cd api
+uvicorn app:app --reload
 ```
 
-#### Step 4: Access the Frontend
+#### Step 5: Access the Frontend
 
 Access the frontend by navigating to [http://localhost:8000](http://localhost:8000).
 
-(if running locally via Uvicorn).
+## API Usage
 
-For Docker, access  [http://localhost:8080](http://localhost:8080).
-
-## Usage Instructions
-
-### Using the API
-
-1. Start the API using the command provided above.
-2. Send a POST request to the `/predict` endpoint with the required input features in JSON format.
-3. Example input:
+Send a POST request to the `/predict` endpoint:
 
 ```json
 {
@@ -144,22 +173,6 @@ For Docker, access  [http://localhost:8080](http://localhost:8080).
     "season": "s"
   }
 ```
-
-4. Example output:
-
-The model returns 1 for poisonous, 0 for edible mushrooms.
-
-```json
-{
-  "prediction": "1"
-}
-```
-
-### Using the Frontend
-
-1. Open the frontend in your browser.
-2. Enter the required input features in the form.
-3. Click the "Predict" button to see the result.
 
 ## License
 
