@@ -1,17 +1,17 @@
-.PHONY: install run test lint docker-build
+PYTHON = .venv/bin/python
 
 install:
-	pip install -r api/requirements.txt
-	pip install pytest httpx
+	$(PYTHON) -m pip install -r api/requirements.txt
+	$(PYTHON) -m pip install pytest httpx ruff
 
 run:
-	cd api && uvicorn app:app --reload
+	cd api && ../$(PYTHON) -m uvicorn app:app --reload
 
 test:
-	python -m pytest api/tests
+	$(PYTHON) -m pytest api/tests
 
 lint:
-	ruff check api/
+	$(PYTHON) -m ruff check api/
 
 docker-build:
 	docker build -t mushroom-api api/
